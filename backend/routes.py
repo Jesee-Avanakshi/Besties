@@ -73,7 +73,7 @@ def update_friend(id):
             friend.gender = data.get("gender",friend.gender)
 
             db.session.commit()
-            return jsonify({"msg":"Friend updated successfuly"}),200
+            return jsonify(friend.to_json()),200
     except Exception as e:
         db.session.rollback()
         return jsonify({"error" : str(e)}),500
